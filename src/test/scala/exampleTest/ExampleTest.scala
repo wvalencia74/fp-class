@@ -26,4 +26,8 @@ class ExampleTest extends FunSuite {
 
   }
 
+  test("pruba max div"){
+
+  }
+
 }
