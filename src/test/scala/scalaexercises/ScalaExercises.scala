@@ -17,7 +17,7 @@ class ScalaExercises extends FunSuite{
     assert(noneValue.getOrElse("prueba").equals("prueba"))
 
     val sValue: Option[Double] = Some(20.0)
-    val value = sValue match {
+    val value: Double = sValue match {
       case Some(v) ⇒ v
       case None ⇒ 0.0
     }
@@ -30,5 +30,27 @@ class ScalaExercises extends FunSuite{
     }
     assert(value1.equals(0.0))
 
+    val number: Option[Int] = Some(3)
+    val noNumber: Option[Int] = None
+    val result1 = number.fold(1)(_ * 3)
+    val result2 = noNumber.fold(1)(_ * 3)
+
+    assert(result1.equals(9))
+    assert(result2.equals(1))
+  }
+
+  test("Pruebas sobre objects"){
+
+  }
+
+  test("Pruebas con tuplas"){
+    val tuple4 = ("a", 1, 2.2, "five")
+
+    assert(tuple4._1.equals("a"))
+
+    val student = ("Maria", 21, 3.5)
+    val (name, age, gpa) = student
+
+    assert(name.equals("Maria"))
   }
 }
