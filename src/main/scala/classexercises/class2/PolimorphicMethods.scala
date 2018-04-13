@@ -1,7 +1,7 @@
 package classexercises.class2
 
 object PolimorphicMethods {
-  def foo(a:Int, b:Int) = ???
+  /*def foo(a:Int, b:Int) = ???
 
   def hof[A,  B](x: A, msg: String, f: A => B) = {
     s"el $msg es : ${f(x)}"
@@ -14,5 +14,5 @@ object PolimorphicMethods {
   def div:Double => Double => Double = x => y => y match {
     case 0 => 0
     case _ => x/y
-  }
+  }*/
 }
