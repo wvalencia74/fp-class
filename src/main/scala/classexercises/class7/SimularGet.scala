@@ -28,7 +28,7 @@ object SimularGet {
     def apply(name: Option[String]) = {
       name match {
         case Some(name) => Right(new Nombre(name))
-        case _ => Left(EmptyName)
+        case _ => Left(EmptyName())
       }
     }
   }
@@ -38,7 +38,7 @@ object SimularGet {
     def apply(lastName: Option[String]) = {
       lastName match {
         case Some(lastName) => Right(new Apellido(lastName))
-        case _ => Left(EmptyLastName)
+        case _ => Left(EmptyLastName())
       }
     }
   }
@@ -48,14 +48,14 @@ object SimularGet {
     def apply(tel: Option[String]): Either[Error, Telefono] = {
       tel match {
         case Some(tel) => Right(new Telefono(tel))
-        case _ => Right(new Telefono(""))
+        case _ => Left(EmptyLastName())
       }
     }
   }
 
   case class Usuario(id:Id, nombre:Nombre, apellido:Apellido, telefono:Telefono)
   object Usuario {
-    def apply(ident: Option[String], nombre: Option[String], apellido: Option[String], telefono: Option[String]) = {
+    def apply(ident: Option[String], nombre: Option[String], apellido: Option[String], telefono: Option[String]): Either[Error, Usuario] = {
 
       for {
         identif  <- Id(ident)
@@ -86,7 +86,7 @@ object SimularGet {
     Future(Option("2334565"))
   }
 
-  def getUsuario()= {
+  def getUsuario(): Future[Either[Error, Usuario]] = {
     for{
       id       <- getId()
       name     <- getNombre()

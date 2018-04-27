@@ -40,7 +40,7 @@ class ScalaExercises extends FunSuite{
   }
 
   test("Pruebas sobre objects"){
-
+    
   }
 
   test("Pruebas con tuplas"){
@@ -52,5 +52,20 @@ class ScalaExercises extends FunSuite{
     val (name, age, gpa) = student
 
     assert(name.equals("Maria"))
+  }
+
+
+  test("fold"){
+    val inputList: List[Int] = List(1, 3, 5)
+
+    def average(list: List[Double]): Double = list match {
+      case head :: tail => tail.foldLeft((head, 1.0)) { (avg, cur) =>
+        ((avg._1 * avg._2 + cur)/(avg._2 + 1.0), avg._2 + 1.0)
+      }._1
+      case Nil => 0.0
+    }
+
+    val opt1: Option[Int] = Some(5)
+    opt1.fold(0)(_ + 1)
   }
 }
