@@ -70,6 +70,7 @@ object SimularGet {
     //def apply(id: String, nombre: String, ): Usuario = new Usuario(id, nombre, None)
   }
 
+  /*
   def getId(): Future[Option[String]] ={
     Future(Option("12345"))
   }
@@ -95,13 +96,7 @@ object SimularGet {
     } yield {
         Usuario(id,name,lastName,tel)
     }
-
-    /*user.map {
-      case user@Some(Usuario(id, nombre, apellido, _)) => Right(user.orNull)
-      case None => Left(TechnicalError())
-    }*/
-  }
-
+  }*/
 
 
 }

@@ -2,6 +2,7 @@
 import classexercises.class2.TestObject.testObj
 import classexercises.class2._
 import classexercises.class7._
+import classexercises.class12._
 
 object Main {
   def main(args: Array[String]): Unit = {
@@ -12,7 +13,8 @@ object Main {
     //testObj
     //println(ComposicionFunciones.compose2("1"))
     //Futuros.futureSeq()
-    println(SimularGet.getUsuario())
+    //println(SimularGet.getUsuario())
+    //println(Semigroups.combine())
   }
 
   def foo(a:Int=>Int) = a(3)
