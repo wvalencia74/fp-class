@@ -1,38 +1,26 @@
 package classexercises
 
-import org.scalatest.FunSuite
-import class12.combineAdd._
-import classexercises.class12.Semigroups
+import org.scalatest.FunSpec
+import classexercises.class2._
 
-class Class2 extends FunSuite{
+class Class2 extends FunSpec {
 
-  test("factorial"){
-
-  }
-
-  test("Simular While"){
-
-  }
-
-  test("Evaluar if-elseif-else"){
-
-  }
-
-  test("imprimir valor del factorial - composicion de funciones"){
-
-    case class A(a:Int, b:Int)
-
-    val aa = A(1,2)
-
-    aa match {
-      case A(a,b) => A(a+1, b+1)
+  describe("El calculo de un factorial simple") {
+    it("factorial") {
+      assert(true, Factorial.calcularFactorial(4).equals(6))
     }
-
   }
 
-  test("Combine semigroups"){
-    println(Semigroups.combine(Option(2), Option(1)))
+  describe("Un factorial recursivo debe soportar números muy grandes") {
+    it("factorial recursivo") {
+      assert(true, Factorial.factorial(1557).isValidInt)
+    }
   }
 
+  describe("Hay dos maneras de realizar la composición de funciones - andThen - compose") {
+    it("Composición de funciones") {
+      assert(true, ComposicionFunciones.compose.equals(ComposicionFunciones.compose2))
+    }
+  }
 
 }

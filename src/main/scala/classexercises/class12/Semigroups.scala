@@ -6,7 +6,7 @@ package classexercises.class12
     //case Some(s) =>  s + b{case Some(z) => z}
 
   }
-}*/
+}
 
 trait Semigroup[A] {
   def combine(a:A, b:A):A
@@ -38,5 +38,5 @@ trait SemigroupSyntex {
   implicit class SemigroupSyntax[A](a:A){
     def combine(b:A)(implicit  s:Semigroup[A]): A = s.combine(a, b)
    }
-}
+}*/
 
