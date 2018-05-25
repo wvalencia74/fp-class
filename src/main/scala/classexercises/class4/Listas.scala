@@ -2,12 +2,13 @@ package classexercises.class4
 
 import scala.annotation.tailrec
 
+
 object Listas {
 
-  def add(l: List[Int]):List[Int] = {
+  def addOne(l: List[Int]):List[Int] = {
     l match {
-      case h :: Nil => (h+1) :: Nil
-      case h :: t => (h + 1) :: add(t)
+      case h :: Nil => (h + 1) :: Nil
+      case h :: t => (h + 1) :: addOne(t)
       case Nil => Nil
     }
   }
@@ -24,16 +25,20 @@ object Listas {
     addLoop(l, Nil)
   }
 
-  def promedio(l: List[Int]):Double= {
-    val tam = hallarTamaño(l,0,1D)
+  def obtenerPromedio(list: List[Int]):Double= {
+    val tam = hallarTamañoR(list)
     tam._1/tam._2
   }
 
-  @tailrec
-  def hallarTamaño(elem: List[Int], acc:Int, cant:Double): (Int,Double) = {
-    elem match {
-      case h :: t => hallarTamaño(t, acc+h, cant+1)
-      case Nil => (acc,cant)
+  def hallarTamañoR(elementos: List[Int]): (Int,Double) ={
+    @tailrec
+    def hallarTamaño(elem: List[Int], acc:Int, cant:Double): (Int,Double) = {
+      elem match {
+        case h :: t => hallarTamaño(t, acc+h, cant+1)
+        case Nil => (acc,cant)
+      }
     }
+    hallarTamaño(elementos, 0, 0L)
   }
+
 }

@@ -1,4 +1,4 @@
-package scalaExercises
+package studyexercises
 
 object Tuples {
 
