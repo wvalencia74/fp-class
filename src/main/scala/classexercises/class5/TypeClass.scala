@@ -2,33 +2,35 @@ package classexercises.class5
 
 object TypeClass {
 
-}
-case class Nombre(primerNombre: String,apellidos: String)
-case class Persona(nombre: Nombre, edad: Int)
-
-trait Trans[A]{
-  def trans(a: A): String
-}
-
-object TransInstances{
-  implicit val intToString = new Trans[Int]{
-    override def trans(a: Int): String = a.toString
+  sealed trait Persona{
+    val nombre:String
+    val patrimonio:Int
   }
-  implicit val boolToString = new Trans[Boolean]{
-    override def trans(a: Boolean): String = a.toString
-  }
-  implicit val personnToString = new Trans[Persona]{
-    override def trans(a: Persona): String = s"El nombre es ${a.nombre.primerNombre}, apellido ${a.nombre.apellidos} y edad ${a.edad.toString}"
-  }
-}
-object TransOperation{
-  def transformar[A](a: A)(implicit ts: Trans[A]) = ts.trans(a)
-}
 
-object MainTypeClass extends App{
-  import TransInstances._
-  import TransOperation._
-  println(s"${transformar(1)}")
-  println(s"${transformar(true)}")
-  println(s"${transformar(Persona(Nombre("Mauricio","Cardona J"),21))}")
+  case class PersonaNatural(nombre:String, patrimonio:Int) extends Persona
+  case class PersonaJuridica(nombre:String, patrimonio:Int) extends Persona
+
+  trait Sumable[T] {
+    def sumar(a:T, b:T):T
+    def zero:T
+  }
+
+  object SumableOps{
+    implicit object IntSumable extends Sumable[Int] {
+      def sumar(a:Int, b:Int): Int = a + b
+      def zero = 0
+    }
+
+    implicit object sumPatrimonio extends Sumable[Persona]{
+      def sumar(a:Persona, b:Persona):PersonaJuridica = {
+        PersonaJuridica(nombre = "juridica", patrimonio = a.patrimonio + b.patrimonio)
+      }
+      def zero = PersonaJuridica("juridica", 0)
+    }
+  }
+
+  import SumableOps._
+  def sume[T](a:T, b:T)(implicit s: Sumable[T]):T = s.sumar(a,b)
+  sume(1,2)
+  def sumaa[T:Sumable](a:T, b:T): T = implicitly[Sumable[T]].sumar(a,b)
 }

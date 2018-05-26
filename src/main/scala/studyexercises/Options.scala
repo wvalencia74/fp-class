@@ -11,6 +11,4 @@ object Options {
 
   def sumTwo(x:Option[Int]) = x.flatMap(x => Option(x+2))
 
-
-  //s.map(_*2)
 }

@@ -1,6 +1,7 @@
 package classexercises
 
-import classexercises.class4.Listas
+import classexercises.class4.ModelExercises.Mensaje
+import classexercises.class4.{Listas, ModelExercises}
 import org.scalatest.{AsyncWordSpec, Matchers}
 
 
@@ -27,6 +28,15 @@ class Class4Test extends AsyncWordSpec with Matchers {
       Listas.addR(list) shouldBe List(2,3,4)
     }
   }
+
+  "Para crear nuevos mensajes" should {
+
+    /*"poder crear un nuevo mensaje" in {
+      new Mensaje("Hola",1) shouldBe Mensaje("Hola",1)
+    }*/
+
+  }
+
 
 }
 

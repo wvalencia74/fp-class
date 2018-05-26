@@ -1,6 +1,4 @@
-package classexercises.class7
-
-import scala.concurrent.Future
+package studyexercises
 
 object SimularGet {
 

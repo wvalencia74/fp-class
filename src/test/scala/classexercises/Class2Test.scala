@@ -3,7 +3,7 @@ package classexercises
 import org.scalatest.FunSpec
 import classexercises.class2._
 
-class Class2 extends FunSpec {
+class Class2Test extends FunSpec {
 
   describe("El calculo de un factorial simple") {
     it("factorial") {
